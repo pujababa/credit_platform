@@ -14,6 +14,7 @@ tickers_input = st.text_input(
 )
 tickers = [t.strip() for t in tickers_input.split(",")]
 
+
 # RSI function
 def calculate_rsi(data, window=14):
     delta = data['Close'].diff()
