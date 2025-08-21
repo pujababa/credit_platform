@@ -1,9 +1,10 @@
 import streamlit as st
-import yfinance as yf #type: ignore
+import yfinance as yf
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# Title
+# Page config
+st.set_page_config(page_title="📊 Credit / Stock Risk Analysis Platform", layout="centered")
 st.title("📊 Credit / Stock Risk Analysis Platform")
 
 # Input: Multiple tickers comma-separated
@@ -27,9 +28,10 @@ def calculate_rsi(data, window=14):
 # Analyze each ticker
 for ticker in tickers:
     st.subheader(f"📈 {ticker} Analysis")
-
+    
     # Fetch stock data
     data = yf.download(ticker, period="6mo")
+    
     if data.empty:
         st.warning(f"No data found for {ticker}")
         continue
